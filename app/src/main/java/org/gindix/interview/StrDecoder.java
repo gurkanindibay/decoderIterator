@@ -54,11 +54,4 @@ public class StrDecoder implements Iterator{
         return currentChar.toString();
     }
 
-    public static void main(String[] args) {
-        StrDecoder strDecoder = new StrDecoder("080714");
-        while(strDecoder.hasNext()){
-            System.out.println(strDecoder.next());
-        }
-    }
-
 }
