@@ -48,6 +48,9 @@ public class StrDecoder implements Iterator{
         repeatCount--;
         if (repeatCount <= 0)
             currentCharIndex++;
+        // This implementation returns a string to simplify handling of empty strings and to return an empty string 
+        // when all repeat counts are 0 (as seen in the 5th test). 
+        // With additional effort, this could be adapted to return characters instead, potentially improving performance.
         return currentChar.toString();
     }
 
