@@ -29,14 +29,33 @@ public class StrDecoder implements Iterator{
     public Object next() {
         
         if (currentCharIndex%2 == 0){
-            repeatCount = Character.getNumericValue(strToDecode.charAt(currentCharIndex));  
+            repeatCount = Character.getNumericValue(strToDecode.charAt(currentCharIndex));
+            //below while block is to handle 0 character count inside the encoded string
+            //skips until find a non-zero character count
+             while (repeatCount == 0 ) {
+                currentCharIndex = currentCharIndex+2; 
+                if(currentCharIndex >= strToDecode.length())
+                    break;
+                repeatCount = Character.getNumericValue(strToDecode.charAt(currentCharIndex));
+            }
+
             currentCharIndex++; 
+        }
+        if(currentCharIndex > strToDecode.length()){
+            return "";
         }
         Character currentChar = strToDecode.charAt(currentCharIndex);
         repeatCount--;
-        if (repeatCount == 0)
+        if (repeatCount <= 0)
             currentCharIndex++;
-        return currentChar;
+        return currentChar.toString();
+    }
+
+    public static void main(String[] args) {
+        StrDecoder strDecoder = new StrDecoder("080714");
+        while(strDecoder.hasNext()){
+            System.out.println(strDecoder.next());
+        }
     }
 
 }

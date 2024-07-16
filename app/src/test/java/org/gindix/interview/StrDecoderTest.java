@@ -39,5 +39,17 @@ class StrDecoderTest {
     @Test void testInput2(){
         testCode("482714", "8888774");
     }
+
+    @Test void testInput3(){
+        testCode("082714", "774");
+    }
+
+    @Test void testInput4(){
+        testCode("080724", "44");
+    }
+
+    @Test void testInput5(){
+        testCode("080704", "");
+    }
     
 }
